@@ -26,16 +26,24 @@ const transporter = nodemailer.createTransport({
 
 // Rota para receber os pedidos
 app.post('/enviar-pedido', (req, res) => {
-    const { revendedor, produto1, produto2, produto3 } = req.body;
+    const {
+        revendedor,
+        produto1, produto2, produto3, produto4, produto5, produto6, produto7, produto8
+    } = req.body;
 
     const mailOptions = {
         from: 'kauanoliveiradesouza2016@gmail.com',
         to: 'kauanoliveiradesouza2016@gmail.com',  // Seu e-mail de destino
         subject: 'Novo Pedido Recebido',
         text: `Pedido recebido de ${revendedor}:\n
-Produto 1: ${produto1} unidades\n
-Produto 2: ${produto2} unidades\n
-Produto 3: ${produto3} unidades`
+Brigadeiro: ${produto1} unidades\n
+Beijinho: ${produto2} unidades\n
+Paçoca: ${produto3} unidades\n
+Pé de Moça: ${produto4} unidades\n
+Casadinho: ${produto5} unidades\n
+Olho de Sogra: ${produto6} unidades\n
+Cajuzinho: ${produto7} unidades\n
+Coco Queimado: ${produto8} unidades`
     };
 
     // Enviar o e-mail
