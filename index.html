@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Pedidos</title>
+    <style>
+        /* Adicionando alguns estilos para melhorar a aparência */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        .produto {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+        }
+        input[type="number"], input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .alert {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            color: white;
+            background-color: #f44336;
+            display: none;
+        }
+        .success {
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Escolha a quantidade de produtos</h1>
+        <div class="produto">
+            <label for="revendedor">Nome do Revendedor:</label>
+            <input type="text" id="revendedor" required>
+        </div>
+        <div class="produto">
+            <label for="produto1">Produto 1 (quantidade de 1 a 100):</label>
+            <input type="number" id="produto1" min="1" max="100" required>
+        </div>
+        <div class="produto">
+            <label for="produto2">Produto 2 (quantidade de 1 a 100):</label>
+            <input type="number" id="produto2" min="1" max="100" required>
+        </div>
+        <div class="produto">
+            <label for="produto3">Produto 3 (quantidade de 1 a 100):</label>
+            <input type="number" id="produto3" min="1" max="100" required>
+        </div>
+        <button id="enviarPedido">Enviar Pedido</button>
+        <div id="resultado" class="alert"></div>
+    </div>
+
+    <script>
+        document.getElementById('enviarPedido').addEventListener('click', () => {
+            const revendedor = document.getElementById('revendedor').value;
+            const produto1 = document.getElementById('produto1').value;
+            const produto2 = document.getElementById('produto2').value;
+            const produto3 = document.getElementById('produto3').value;
+
+            // Verificar se todos os campos foram preenchidos corretamente
+            if (!revendedor || !produto1 || !produto2 || !produto3) {
+                showMessage('Por favor, preencha todos os campos.', 'error');
+                return;
+            }
+
+            const dadosPedido = {
+                revendedor: revendedor,
+                produto1: produto1,
+                produto2: produto2,
+                produto3: produto3
+            };
+
+            fetch('http://localhost:3000/enviar-pedido', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dadosPedido)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    showMessage('Pedido enviado com sucesso!', 'success');
+                } else {
+                    showMessage('Houve um erro ao enviar o pedido.', 'error');
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                showMessage('Erro ao enviar o pedido. Tente novamente.', 'error');
+            });
+        });
+
+        // Função para mostrar a mensagem de sucesso ou erro
+        function showMessage(message, type) {
+            const resultado = document.getElementById('resultado');
+            resultado.textContent = message;
+            resultado.className = 'alert ' + (type === 'success' ? 'success' : '');
+            resultado.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
