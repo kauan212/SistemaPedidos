@@ -28,7 +28,7 @@ const transporter = nodemailer.createTransport({
 app.post('/enviar-pedido', (req, res) => {
     const {
         revendedor,
-        produto1, produto2, produto3, produto4, produto5, produto6, produto7, produto8
+        produto1, produto2, produto3, produto4, produto5, produto6, produto7, produto8, produto9, produto10, produto11, produto12, produto13, produto14
     } = req.body;
 
     const mailOptions = {
@@ -43,7 +43,13 @@ Pé de Moça: ${produto4} unidades\n
 Casadinho: ${produto5} unidades\n
 Olho de Sogra: ${produto6} unidades\n
 Cajuzinho: ${produto7} unidades\n
-Coco Queimado: ${produto8} unidades`
+Coco Queimado: ${produto8} unidades\n
+Ninho Com Nutella: ${produto9} unidades\n
+Nesquik Com Nutella: ${produto10} unidades\n
+Churros: ${produto11} unidades\n
+M&M: ${produto12} unidades\n
+Charge Com Nutella: ${produto13} unidades\n
+Chocoball: ${produto14} unidades`
     };
 
     // Enviar o e-mail
