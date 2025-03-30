@@ -16,8 +16,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: 'kauanoliveiradesouza2016@gmail.com',  // Seu e-mail
-        pass: 'srfc acth ccgd pjzt'  // Senha de aplicativo gerada
+        user: 'pedidosgaleano@gmail.com',  // Seu e-mail
+        pass: 'xalg mfko jakr hbve'  // Senha de aplicativo gerada
     },
     tls: {
         rejectUnauthorized: false  // Desativa verificação de certificado (ajuda a evitar alguns erros de SSL)
@@ -32,7 +32,7 @@ app.post('/enviar-pedido', (req, res) => {
     } = req.body;
 
     const mailOptions = {
-        from: 'kauanoliveiradesouza2016@gmail.com',
+        from: 'pedidosgaleano@gmail.com',
         to: 'kauanoliveiradesouza2016@gmail.com',  // Seu e-mail de destino
         subject: 'Novo Pedido Recebido',
         text: `Pedido recebido de ${revendedor}:\n
