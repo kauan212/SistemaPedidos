@@ -28,7 +28,7 @@ const transporter = nodemailer.createTransport({
 app.post('/enviar-pedido', (req, res) => {
     const {
         revendedor,
-        produto1, produto2, produto3, produto4, produto5, produto6, produto7, produto8, produto9, produto10, produto11, produto12, produto13, produto14, produto15, produto16, produto17, produto18, produto19, produto20, produto21
+        produto1, produto2, produto3, produto4, produto5, produto6, produto7, produto8, produto9, produto10, produto11, produto12, produto13, produto14, produto15, produto16, produto17, produto18, produto19, produto20, produto21, produto22, produto23, produto24, produto25, produto26, produto27, produto28, produto29, produto30, produto31
     } = req.body;
 
     const mailOptions = {
@@ -56,7 +56,17 @@ Rocher Branco: ${produto17} unidades\n
 Rocher: ${produto18} unidades\n
 Maracuja: ${produto19} unidades\n
 Damasco: ${produto20} unidades\n
-Laka: ${produto21} unidades`
+Laka: ${produto21} unidades\n
+Amarula: ${produto22} unidades\n
+Cacau 50: ${produto23} unidades\n
+Cafe: ${produto24} unidades\n
+Castanha: ${produto25} unidades\n
+Rum: ${produto26} unidades\n
+Prestigio: ${produto27} unidades\n
+Morango Preto: ${produto28} unidades\n
+Morango Branco: ${produto29} unidades\n
+Uva: ${produto30} unidades\n
+Cereja: ${produto31} unidades`
 
     };
 
