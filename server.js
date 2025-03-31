@@ -28,13 +28,13 @@ const transporter = nodemailer.createTransport({
 app.post('/enviar-pedido', (req, res) => {
     const {
         revendedor,
-        produto1, produto2, produto3, produto4, produto5, produto6, produto7, produto8, produto9, produto10, produto11, produto12, produto13, produto14
+        produto1, produto2, produto3, produto4, produto5, produto6, produto7, produto8, produto9, produto10, produto11, produto12, produto13, produto14, produto15, produto16, produto17, produto18, produto19, produto20, produto21
     } = req.body;
 
     const mailOptions = {
         from: 'pedidosgaleano@gmail.com',
         to: 'kauanoliveiradesouza2016@gmail.com',  // Seu e-mail de destino
-        subject: 'Novo Pedido Recebido',
+        subject: `Novo Pedido Recebido de ${revendedor}`,
         text: `Pedido recebido de ${revendedor}:\n
 Brigadeiro: ${produto1} unidades\n
 Beijinho: ${produto2} unidades\n
@@ -49,7 +49,15 @@ Nesquik Com Nutella: ${produto10} unidades\n
 Churros: ${produto11} unidades\n
 M&M: ${produto12} unidades\n
 Charge Com Nutella: ${produto13} unidades\n
-Chocoball: ${produto14} unidades`
+Chocoball: ${produto14} unidades\n
+Bombom de Nozes: ${produto15} unidades\n
+Camafeu: ${produto16} unidades\n
+Rocher Branco: ${produto17} unidades\n
+Rocher: ${produto18} unidades\n
+Maracuja: ${produto19} unidades\n
+Damasco: ${produto20} unidades\n
+Laka: ${produto21} unidades`
+
     };
 
     // Enviar o e-mail
